@@ -1,0 +1,56 @@
+[
+    {
+        "Id": 1,
+        "Location": {
+            "Latitude": 8.4851143,
+            "Longitude": -13.2201753
+        },
+        "Type": "community pump",
+        "Capacity": 1500
+    },
+    {
+        "Id": 2,
+        "Location": {
+            "Latitude": 8.4872734,
+            "Longitude": -13.2174529
+        },
+        "Type": "community pump",
+        "Capacity": 1000
+    },
+    {
+        "Id": 3,
+        "Location": {
+            "Latitude": 7.9583848,
+            "Longitude": -11.7489257
+        },
+        "Type": "well",
+        "Capacity": 2000
+    },
+    {
+        "Id": 4,
+        "Location": {
+            "Latitude": 7.8724855,
+            "Longitude": -11.1774324
+        },
+        "Type": "pumping station",
+        "Capacity": 1300
+    },
+    {
+        "Id": 5,
+        "Location": {
+            "Latitude": 8.8795668,
+            "Longitude": -12.0440386
+        },
+        "Type": "well",
+        "Capacity": 1200
+    },
+    {
+        "Id": 6,
+        "Location": {
+            "Latitude": 9.1282904,
+            "Longitude": -12.9162644
+        },
+        "Type": "dam",
+        "Capacity": 100000
+    }
+]
