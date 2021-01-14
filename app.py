@@ -95,8 +95,31 @@ def updateRecord(entry: dict) -> Dict[str, str]:
     return entry
 
 @app.route("/")
-def mapview():
-    return render_template('salone-map.html')
+def index():
+    start_coords = (8.460555, -11.779889)
+    folium_map = folium.Map(
+        location=start_coords, zoom_start=5    )
+
+    json_data = readFile(water_stations_data)
+
+    for point in json_data:
+
+        folium.Marker(
+                [point['Latitude'], point['Longitude']], 
+                popup="""
+                <strong>
+                    Latitude: {},
+                    Longitude: {},
+                    Type: {},
+                    Capacity: {},
+                </strong>
+                """.format(
+                    point['Latitude'], point['Longitude'],
+                    point['Type'], point['Capacity']
+                ),
+                tooltip="Click for more info").add_to(folium_map)
+
+    return folium_map._repr_html_()
 
 # create api
 @app.route('/water_station/api/v1/create', methods=['POST'])
@@ -218,33 +241,6 @@ def deleteWaterStation():
             writer.writerows(lines)
     return jsonify({"Success": "Deleted ID: {} successfully".format(id_number)})
 
-
-@app.route("/map")
-def newMap():
-    start_coords = (8.460555, -11.779889)
-    folium_map = folium.Map(
-        location=start_coords, zoom_start=5    )
-
-    json_data = readFile(water_stations_data)
-
-    for point in json_data:
-
-        folium.Marker(
-                [point['Latitude'], point['Longitude']], 
-                popup="""
-                <strong>
-                    Latitude: {},
-                    Longitude: {},
-                    Type: {},
-                    Capacity: {},
-                </strong>
-                """.format(
-                    point['Latitude'], point['Longitude'],
-                    point['Type'], point['Capacity']
-                ),
-                tooltip="Click for more info").add_to(folium_map)
-
-    return folium_map._repr_html_()
 
 if __name__ == "__main__":
     app.run(debug=True)
